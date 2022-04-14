@@ -118,7 +118,7 @@ if (LetsGetStartedButton) LetsGetStartedButton.addEventListener(('click'), () =>
     //load second page html
     var a = document.createElement('a');
 
-    a.href = "./secondPage.html";
+    a.href = "./SocialPage/index.html";
     a.click();
 })
 

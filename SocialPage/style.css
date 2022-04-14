@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Shippori Antique B1;
+}
+
+canvas {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+main {
+    position: absolute;
+    z-index: 10;
+    min-width: fit-content;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+
+/* SECOND PAGE */
+
+
+
+/* SECOND PAGE */
