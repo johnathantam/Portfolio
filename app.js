@@ -67,10 +67,6 @@ function init()
 	const ambientLight = new THREE.AmbientLight(0xfffffff);
 	scene.add(ambientLight);
 
-	//load background
-	const backgroundTexture = new THREE.TextureLoader().load('./CustomImages/SpaceBlurryGradient/png');
-	scene.background = backgroundTexture;
-
 	//load up all scene assets
 	loadPlane();
 	loadStars();
@@ -104,8 +100,28 @@ function Update()
     if (renderer) renderer.render( scene, camera );
 }
 
+//add event listeners to resize camera and scene
+//also add functionality to load different pages haha
+window.onresize = onWindowResize;
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+//apply - load new page function
+var LetsGetStartedButton = document.getElementById("getStartedButton");
+
+if (LetsGetStartedButton) LetsGetStartedButton.addEventListener(('click'), () =>
+{   
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "./secondPage.html";
+    a.click();
+})
+
 //initialize and start animating scene
 init();
 Update();
-
-export { camera, renderer }
