@@ -83,10 +83,6 @@ function initSecondScene()
     light4.position.set(-r, y, 0);
     scene.add(light4);
 
-	//load background
-	const backgroundTexture = new THREE.TextureLoader().load('./CustomImages/SpaceBlurryGradient/png');
-	scene.background = backgroundTexture;
-
 	//load scene assets and effects
 	loadBackground();
 
@@ -114,3 +110,57 @@ function Update()
 //set everything ups
 initSecondScene();
 Update();
+
+window.addEventListener("resize", onWindowResize, false);
+
+//resize the camera everytime the window is resized
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+//apply - load new page function
+var letsGoBackButton = document.getElementById("goBackButton");
+
+if (letsGoBackButton) letsGoBackButton.addEventListener(('click'), () =>
+{   
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "http://127.0.0.1:8080/index.html";
+    a.click();
+})
+
+var githubButton = document.getElementById("goToGithub");
+
+if (githubButton) githubButton.addEventListener(('click'), () =>
+{   
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "https://github.com/johnathantam";
+	a.target = "blank";
+    a.click();
+})
+
+var resumeButton = document.getElementById("goToResume");
+
+resumeButton.addEventListener(('click'), () => {
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "./CustomImages/resume.JPG";
+    a.target = "blank";
+    a.click();
+})
+
+var experience = document.getElementById("goToExperience");
+
+if (experience) experience.addEventListener(('click'), () => {
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "http://127.0.0.1:8080/ExperiencePage/index.html";
+    a.click();
+})

@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Shippori Antique B1;
+}
+
+canvas {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+main {
+    position: absolute;
+    z-index: 10;
+    min-width: fit-content;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+
+.regular-button {
+    font-size: 100%;
+    width: 20%;
+    height: 30%;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border-radius: 0.5vw;
+    border: 0.2vw solid white;
+    transition-duration: 0.4s;
+}
+
+.regular-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* THIRD PAGE */
+
+.center-box-header {
+    width: 50vw;
+    height: 35vh;
+    margin: auto;
+    font-size: 100%;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, calc(100%/3));
+}
+
+.project-section {
+    width: 100vw;
+    height: 70vh;
+    background-color: rgb(0, 0, 0); 
+
+    display: grid;
+    grid-template-columns: repeat(5, calc(100%/5));
+    grid-template-rows: repeat(5, calc(100%/5));
+}
+
+.shooting-star {
+    margin: auto;
+    color: white;
+    font-size: 150%;
+}
+
+.project-info-box {
+    grid-row: 1/4;
+    grid-column: 1/4;
+    width: 80%;
+    height: 80%;
+    margin: auto;   
+
+    display: grid;
+    grid-template-columns: repeat(3, calc(100%/3));
+    grid-template-rows: repeat(3, calc(100%/3));
+}
+
+.project-title-box {
+    width: 80%;
+    height: 60%;
+    border-style: solid;
+    border-color: white;
+    grid-row: 1/3;
+    grid-column: 1/4;
+    margin: auto;
+    display: grid;
+}
+
+.project-title {
+    margin: auto;
+    font-size: 200%;
+    color: white
+}
+
+.project-description {
+    width: 80%;
+    height: 60%;
+    border-style: none none solid none;
+    grid-row: 3/4;
+    grid-column: 1/4;
+    margin: auto;
+    display: grid; 
+    color: white;
+    font-size: 100%;
+}
+
+.project-picture-top {
+    grid-row: 1/4;
+    grid-column: 3/6;
+    width: 45%;
+    height: 60%;
+    margin: auto;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+}
+
+.project-picture-bottom {
+    grid-row: 3/6;
+    grid-column: 3/6;
+    width: 45%;
+    height: 60%;
+    margin: auto;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 1281px) {
+    .project-description {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    .project-description {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 801px) {
+    .project-description {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .regular-button {
+        font-size: 60%;
+    }
+    .project-title {
+        font-size: 150%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .project-title {
+        font-size: 80%;
+    }
+    .project-description {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .shooting-star {
+        font-size: 80%;
+    }
+
+    .project-title {
+        font-size: 80%;
+    }
+
+    .project-description {
+        font-size: 48%;
+    }
+}
+
+/* THIRD PAGE */

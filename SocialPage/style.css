@@ -22,8 +22,96 @@ main {
     display: grid;
 }
 
+.regular-button {
+    font-size: 100%;
+    width: 20%;
+    height: 30%;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border-radius: 0.5vw;
+    border: 0.2vw solid white;
+    transition-duration: 0.4s;
+}
+
+.regular-button:hover {
+  background-color: white;
+  color: black;
+}
+
 /* SECOND PAGE */
 
+.center-box-header {
+    width: 50vw;
+    height: 35vh;
+    margin: auto;
+    font-size: 100%;
 
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, calc(100%/3));
+}
 
+@media screen and (max-width: 1281px) {
+    .center-box-header {
+        font-size: 70%;
+        width: 40vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    .center-box-header {
+        width: 50vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 801px) {
+    .center-box-header {
+        width: 65vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .center-box-header {
+        width: 90vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .center-box-header {
+        font-size: 60%;
+        width: 90vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .center-box-header {
+        font-size: 50%;
+        width: 90vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
 /* SECOND PAGE */
