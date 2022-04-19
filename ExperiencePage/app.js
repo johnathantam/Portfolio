@@ -1,6 +1,5 @@
 //script for managing the second scene with its entirely different camera, renderer, etc
 import * as THREE from 'https://cdn.skypack.dev/three@0.128.0';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.128.0/examples/jsm/controls/OrbitControls.js';
 import * as TWEEN from 'https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.esm.js';
 
 //make all necessary variables
@@ -119,11 +118,8 @@ function initScene()
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-	const controls = new OrbitControls( camera, renderer.domElement );
-
 	//controls.update() must be called after any manual changes to the camera's transform
 	camera.position.set( 0, 0, 1 );
-	controls.update();
 
 	setUpPlaneForMouseTrail();
 
@@ -162,8 +158,9 @@ Update();
 //since the canvas will naturally be at the bottom of other elements
 //because it is edited in this script, we must append everything else
 //back to the bottom so that the canvas is at the top
-var otherElements = document.getElementsByClassName("project-section");
+var otherElements = Array.prototype.slice.call(document.getElementsByClassName("project-section"));
 for (let i = 0; i < otherElements.length; i++) {
+	console.log(otherElements);
 	document.body.append(otherElements[i]);
 }
 
@@ -181,3 +178,15 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
+//apply - load new page function
+var letsGoBackButton = document.getElementById("goBackButton");
+
+if (letsGoBackButton) letsGoBackButton.addEventListener(('click'), () =>
+{   
+    //load second page html
+    var a = document.createElement('a');
+
+    a.href = "https://johnathantam.github.io/SocialPage/index.html";
+    a.click();
+})

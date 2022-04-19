@@ -54,7 +54,7 @@ main {
 
 .project-section {
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
     background-color: rgb(0, 0, 0); 
 
     display: grid;
@@ -117,6 +117,9 @@ main {
     margin: auto;
     border-radius: 25px;
     background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px grey;
+
+    display: grid;
 }
 
 .project-picture-bottom {
@@ -127,6 +130,9 @@ main {
     margin: auto;
     border-radius: 25px;
     background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px grey;
+
+    display: grid;
 }
 
 @media screen and (max-width: 1281px) {
