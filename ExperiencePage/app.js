@@ -187,6 +187,6 @@ if (letsGoBackButton) letsGoBackButton.addEventListener(('click'), () =>
     //load second page html
     var a = document.createElement('a');
 
-    a.href = "https://johnathantam.github.io/SocialPage/index.html";
+    a.href = "https://johnathantam.github.io/Portfolio/SocialPage/index.html";
     a.click();
 })
