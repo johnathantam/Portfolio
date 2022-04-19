@@ -150,7 +150,7 @@ resumeButton.addEventListener(('click'), () => {
     //load second page html
     var a = document.createElement('a');
 
-    a.href = "./CustomImages/resume.JPG";
+    a.href = "./CustomImages/Resume2022.pdf";
     a.target = "blank";
     a.click();
 })
