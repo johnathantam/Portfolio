@@ -52,6 +52,17 @@ main {
     grid-template-rows: repeat(3, calc(100%/3));
 }
 
+@media screen and (max-width: 1536px) {
+    .center-box-header {
+        font-size: 60%;
+        width: 40vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
 @media screen and (max-width: 1281px) {
     .center-box-header {
         font-size: 70%;
