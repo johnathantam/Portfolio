@@ -52,6 +52,69 @@ main {
     grid-template-rows: repeat(3, calc(100%/3));
 }
 
+#text {
+    animation: text ease 1.5s;
+    -webkit-animation: text ease 1.5s;
+    -moz-animation: text ease 1.5s;
+    -o-animation: text ease 1.5s;
+    -ms-animation: text ease 1.5s;
+}
+
+@keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-moz-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-o-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-ms-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
 @media screen and (max-width: 1536px) {
     .center-box-header {
         font-size: 60%;

@@ -51,6 +51,70 @@ main {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: repeat(3, calc(100%/3));
+    animation: center-box-header ease 10s;
+}
+
+#text {
+    animation: text ease 3s;
+    -webkit-animation: text ease 3s;
+    -moz-animation: text ease 3s;
+    -o-animation: text ease 3s;
+    -ms-animation: text ease 3s;
+}
+
+@keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-moz-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-o-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+
+@-ms-keyframes text {
+  0% {
+    opacity:0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
 }
 
 @media screen and (max-width: 1281px) {
