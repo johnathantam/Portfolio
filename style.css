@@ -117,8 +117,20 @@ main {
   }
 }
 
+@media screen and (max-width: 1536px) {
+    .center-box-header {
+        font-size: 80%;
+        width: 40vw;
+        height: 30vh;
+    }
+    .regular-button {
+        font-size: 80%;
+    }
+}
+
 @media screen and (max-width: 1281px) {
     .center-box-header {
+        font-size: 70%;
         width: 25vw;
         height: 30vh;
     }
@@ -161,6 +173,7 @@ main {
     .center-box-header {
         width: 80vw;
         height: 30vh;
+        font-size: 60%;
     }
     .regular-button {
         font-size: 80%;
@@ -171,6 +184,7 @@ main {
     .center-box-header {
         width: 100vw;
         height: 30vh;
+        font-size: 50%;
     }
     .regular-button {
         font-size: 80%;

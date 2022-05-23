@@ -198,6 +198,12 @@ main {
     display: grid;
 }
 
+@media screen and (max-width: 1536px) {
+    .project-description {
+        font-size: 80%;
+    }
+}
+
 @media screen and (max-width: 1281px) {
     .project-description {
         font-size: 80%;
@@ -244,7 +250,7 @@ main {
     }
 
     .project-description {
-        font-size: 48%;
+        font-size: 40%;
     }
 }
 
