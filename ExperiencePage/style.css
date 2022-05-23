@@ -227,7 +227,10 @@ main {
         font-size: 60%;
     }
     .project-title {
-        font-size: 150%;
+        font-size: 100%;
+    }
+    .project-description {
+        font-size: 55%;
     }
 }
 
@@ -242,11 +245,11 @@ main {
 
 @media screen and (max-width: 320px) {
     .shooting-star {
-        font-size: 80%;
+        font-size: 70%;
     }
 
     .project-title {
-        font-size: 80%;
+        font-size: 70%;
     }
 
     .project-description {
