@@ -183,7 +183,7 @@ main {
 
 @media screen and (max-width: 320px) {
     .center-box-header {
-        font-size: 30%;
+        font-size: 25%;
         width: 90vw;
         height: 30vh;
     }
