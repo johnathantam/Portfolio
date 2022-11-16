@@ -1,38 +1,47 @@
+/*FIRST PAGE*/
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Shippori Antique B1;
+  margin: 0;
+  padding: 0;
+  font-family: Shippori Antique B1;
 }
 
 canvas {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
 }
 
 main {
-    position: absolute;
-    z-index: 10;
-    min-width: fit-content;
-    width: 100vw;
-    height: 100vh;
-    display: grid;
+  position: absolute;
+  z-index: 10;
+  min-width: fit-content;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
 }
 
 .regular-button {
-    font-size: 100%;
-    width: 50%;
-    height: 50%;
-    margin: auto;
-    text-align: center;
-    color: white;
-    background-color: transparent;
-    border-radius: 0.5vw;
-    border: 0.2vw solid white;
-    transition-duration: 0.4s;
+  font-size: 100%;
+  width: auto;
+  height: 15%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin: auto;
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid white;
+  transition-duration: 0.4s;
 }
 
 .regular-button:hover {
@@ -40,155 +49,54 @@ main {
   color: black;
 }
 
-/*FIRST PAGE*/
+.center-content {
+  width: 30%;
+  height: 30%;
+  margin: auto;
+  font-size: 100%;
 
-.center-box-header {
-    width: 30vw;
-    height: 30vh;
-    margin: auto;
-    font-size: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: center-box-header ease 10s;
+}
 
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(3, calc(100%/3));
-    animation: center-box-header ease 10s;
+.center-box-title {
+  margin: auto; 
+  text-align: center; 
+  color: white;
+  font-size: 200%;
+}
+
+.center-box-content {
+  margin: auto; 
+  font-size: 100%; 
+  color: white; 
+  text-align: center;
+  line-height: 200%;
 }
 
 #text {
-    animation: text ease 3s;
-    -webkit-animation: text ease 3s;
-    -moz-animation: text ease 3s;
-    -o-animation: text ease 3s;
-    -ms-animation: text ease 3s;
+  animation: text ease 3s;
+  -webkit-animation: text ease 3s;
+  -moz-animation: text ease 3s;
+  -o-animation: text ease 3s;
+  -ms-animation: text ease 3s;
 }
 
-@keyframes text {
-  0% {
-    opacity:0;
-    transform: translateY(-20%);
+@media (orientation: portrait) {
+  .center-content {
+    width: 70%;
   }
-  100% {
-    opacity:1;
-    transform: translateY(0%);
-  }
-}
 
-@-moz-keyframes text {
-  0% {
-    opacity:0;
-    transform: translateY(-20%);
+  .center-box-title {
+    font-size: 150%;
   }
-  100% {
-    opacity:1;
-    transform: translateY(0%);
+
+  .center-box-content {
+    font-size: 90%;
+  }
+
+  .regular-button {
+    font-size: 90%;
   }
 }
-
-@-webkit-keyframes text {
-  0% {
-    opacity:0;
-    transform: translateY(-20%);
-  }
-  100% {
-    opacity:1;
-    transform: translateY(0%);
-  }
-}
-
-@-o-keyframes text {
-  0% {
-    opacity:0;
-    transform: translateY(-20%);
-  }
-  100% {
-    opacity:1;
-    transform: translateY(0%);
-  }
-}
-
-@-ms-keyframes text {
-  0% {
-    opacity:0;
-    transform: translateY(-20%);
-  }
-  100% {
-    opacity:1;
-    transform: translateY(0%);
-  }
-}
-
-@media screen and (max-width: 1536px) {
-    .center-box-header {
-        font-size: 80%;
-        width: 40vw;
-        height: 30vh;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 1281px) {
-    .center-box-header {
-        font-size: 70%;
-        width: 25vw;
-        height: 30vh;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 1025px) {
-    .center-box-header {
-        width: 40vw;
-        height: 30vh;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 801px) {
-    .center-box-header {
-        width: 60vw;
-        height: 30vh;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .center-box-header {
-        width: 70vw;
-        height: 30vh;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .center-box-header {
-        width: 80vw;
-        height: 30vh;
-        font-size: 60%;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .center-box-header {
-        width: 100vw;
-        height: 30vh;
-        font-size: 50%;
-    }
-    .regular-button {
-        font-size: 80%;
-    }
-}
-
-/*FIRST PAGE*/
