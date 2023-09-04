@@ -1,166 +1,304 @@
 //script for managing the second scene with its entirely different camera, renderer, etc
-import * as THREE from 'https://cdn.skypack.dev/three@0.128.0';
-import { SimplexNoise } from 'https://cdn.skypack.dev/three@0.128.0/examples/jsm/math/SimplexNoise.js';
+import * as THREE from 'https://cdn.skypack.dev/three@0.133.0';
+import { RGBELoader } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/loaders/RGBELoader.js';
+import { FontLoader } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/loaders/FontLoader.js';
 
-//make all necessary variables
-var scene = null, camera = null, renderer = null, simplex = new SimplexNoise();
-//the background plane - store here so we can animate it 
-var plane;
-//get time.deltaTime
-const delta = new THREE.Clock();
+// get canvas object where the scene will be drawn
+var canvasContainer = document.getElementById("canvasContainer");
+var canvas = document.getElementById('bg');
 
-//config
-var conf = {
-    fov: 75,
-    cameraZ: 75,
-    xyCoef: 50,
-    zCoef: 10,
-    lightIntensity: 0.9,
-    ambientColor: 0x000000,
-    light1Color: 0x0E09DC,
-    light2Color: 0x1CD1E1,
-    light3Color: 0x18C02C,
-    light4Color: 0xee3bcf,
-};
+// make all necessary scene variables
+var scene = null, camera = null, renderer = null, ambientLight = null;
 
-function loadBackground()
-{	
-	const geometry = new THREE.PlaneBufferGeometry( 100, 100, 25, 25 );
-	const material = new THREE.MeshPhongMaterial( {color: 0xFFFFFF, side: THREE.DoubleSide, wireframe: false} );
-	plane = new THREE.Mesh( geometry, material );
-	plane.rotation.x = Math.PI / 2;
+// make main object variables
+var glassObjects = [], textMovingRight = [], textMovingLeft = [];
+var glassObjectRotationSpeed = 0.001;
+var textDistanceTravelled = 0, textSpeed = 0.001, textResetOffset = 7;
 
-	scene.add( plane );
-}
+function initializeScene() {	
 
-function animateBackground()
-{
-	let gArray = plane.geometry.attributes.position.array;
-
-	const time = Date.now() * 0.0002;
-	for (let i = 0; i < gArray.length; i+=3)
-	{	
-		gArray[i + 2] = simplex.noise4d(gArray[i] / conf.xyCoef, gArray[i + 1] / conf.xyCoef, time, 1.9667596826360398) * conf.zCoef;
-	}
-
-	plane.geometry.attributes.position.needsUpdate = true;
-}
-
-function initSecondScene()
-{	
 	scene = new THREE.Scene();
-	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+	camera = new THREE.PerspectiveCamera( 75, canvasContainer.offsetWidth / canvasContainer.offsetHeight, 0.1, 1000 );
 	renderer = new THREE.WebGLRenderer({ 
-		canvas: document.querySelector('#bg'),
+		canvas: canvas,
 	});
-
-	camera.position.set(0,5,10);
 
 	//set positions and widths
 	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( window.innerWidth, window.innerHeight );
-	renderer.shadowMap.enabled = true;
-	renderer.shadowMap.soft = true;
-	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-	renderer.shadowMap.needsUpdate = true;
-	document.body.appendChild(renderer.domElement); //this is to overlay html onto the camera
+	renderer.setSize( canvasContainer.offsetWidth, canvasContainer.offsetHeight );
+	// Create an opaque background
+	renderer.setClearColor(0x000000);
+
+}
+
+function createLight() {
 
 	//create light
-	const r = 30;
-    const y = 10;
-    const lightDistance = 500;
+	ambientLight = new THREE.AmbientLight(0xfffffff, 1);
+	scene.add(ambientLight);
+	// ambientLight = new THREE.DirectionalLight(0xfff0dd, 10);
+	// ambientLight.position.set(0, 5, 10);
+	// scene.add(ambientLight);
 
-	let light1 = new THREE.PointLight(conf.light1Color, conf.lightIntensity, lightDistance);
-    light1.position.set(0, y, r);
-    scene.add(light1);
-    let light2 = new THREE.PointLight(conf.light2Color, conf.lightIntensity, lightDistance);
-    light2.position.set(0, -y, -r);
-    scene.add(light2);
-    let light3 = new THREE.PointLight(conf.light3Color, conf.lightIntensity, lightDistance);
-    light3.position.set(r, y, 0);
-    scene.add(light3);
-    let light4 = new THREE.PointLight(conf.light4Color, conf.lightIntensity, lightDistance);
-    light4.position.set(-r, y, 0);
-    scene.add(light4);
-
-	//load scene assets and effects
-	loadBackground();
-
-	//render - draw
-	renderer.render( scene, camera );
 }
 
-function animateScene()
-{	
-	animateBackground();
+function placeCamera() {
+
+	//set camera position
+	camera.position.set(0,0,5);
+
 }
 
-//pretty much the Update() function like in unity - callen every frame
-function Update()
-{	
-    requestAnimationFrame( Update );
+function loadText(font) {
 
-	let deltaSpeed = delta.getDelta();
+	// Build text
+	const color = 0xffffff;
 
-	animateScene()
+	const matLite = new THREE.MeshBasicMaterial( {
+		color: color,
+		side: THREE.DoubleSide
+	} );
 
-    if (renderer) renderer.render( scene, camera );
+	const message = "About me. About me. About me. About me. About me."
+	const shapes = font.generateShapes( message, 1 );
+	const geometry = new THREE.ShapeGeometry( shapes );
+	geometry.computeBoundingBox();
+
+	// Center Text
+	const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+	geometry.translate( xMid, 0, 0 );
+
+	const text = new THREE.Mesh( geometry, matLite );
+	scene.add( text );
+
+	return {'text': text, 'geometry': geometry};
+
 }
 
-//set everything ups
-initSecondScene();
-Update();
+function loadOutlinedText(font) {
 
-window.addEventListener("resize", onWindowResize, false);
 
-//resize the camera everytime the window is resized
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+	// Build text
+	const color = 0xffffff;
+
+	const matDark = new THREE.LineBasicMaterial( {
+		color: color,
+		side: THREE.DoubleSide,
+	} );
+
+	const message = "Nice to meet you! I hope you are well. Nice to meet you! I hope you are well.";
+	const shapes = font.generateShapes( message, 1 );
+	const geometry = new THREE.ShapeGeometry( shapes );
+	geometry.computeBoundingBox();
+
+	// Center Text
+	const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+	geometry.translate( xMid, 0, 0 );
+
+	// Make outline
+
+	const holeShapes = [];
+
+	for ( let i = 0; i < shapes.length; i ++ ) {
+
+		const shape = shapes[ i ];
+
+		if ( shape.holes && shape.holes.length > 0 ) {
+
+			for ( let j = 0; j < shape.holes.length; j ++ ) {
+
+				const hole = shape.holes[ j ];
+				holeShapes.push( hole );
+
+			}
+
+		}
+
+	}
+
+	shapes.push.apply( shapes, holeShapes );
+
+	const lineText = new THREE.Object3D();
+
+	for ( let i = 0; i < shapes.length; i ++ ) {
+
+		const shape = shapes[ i ];
+
+		const points = shape.getPoints();
+		const buffer = new THREE.BufferGeometry().setFromPoints( points );
+
+		buffer.translate( xMid, 0, 0 );
+
+		const lineMesh = new THREE.Line( buffer, matDark );
+		lineText.add( lineMesh );
+
+	}
+
+	scene.add( lineText );
+
+	return {'text': lineText, 'geometry': geometry};
+
+}
+
+async function loadStackedText(count) {
+
+	// Load font
+	const loader = new FontLoader();
+	loader.load('./fonts/Roboto_Regular.json', function ( font ) { 
+
+		var height = 0;
+		var offset = 0.6;
+		var isOutlined = false;
+
+		for (let i = 0; i < count; i++) {
+
+			// Create solid or outlined text
+			var newText = isOutlined ? loadOutlinedText(font) : loadText(font);
+			var text = newText.text;
+
+			// Stack on previous text
+			text.position.set(0, -6 + height + offset, 0 );
+			text.rotation.set(0, 0, Math.PI / 6);
+
+			height += newText.geometry.boundingBox.max.y - newText.geometry.boundingBox.min.y;
+			height += offset;
+
+			// Store text to animate left or right
+			isOutlined ? textMovingLeft.push(text) : textMovingRight.push(text);
+			isOutlined = !isOutlined;
+
+		}
+
+	});
+	
+
+}
+
+function loadGlassObjects() {
+
+	// Load Texture
+	const normalMapTexture = new THREE.TextureLoader().load("./Images/2Q.png");
+	normalMapTexture.wrapS = THREE.RepeatWrapping;
+	normalMapTexture.wrapT = THREE.RepeatWrapping;
+
+	const colorMapTexture = new THREE.TextureLoader().load('./Images/grainy.jpg');
+
+	// Load environment map
+	const hdrEquirect = new RGBELoader().load(
+		"./hdris/empty_warehouse_01_2k.hdr",  () => { hdrEquirect.mapping = THREE.EquirectangularReflectionMapping; }
+	);
+	
+	// Compile material
+	const material = new THREE.MeshPhysicalMaterial({
+		color: 0xffffff,
+		roughness: 0,   
+		transmission: 1,  
+		thickness: 1,
+		map: colorMapTexture,
+		envMap: hdrEquirect,
+		normalMap: normalMapTexture,
+		clearcoatNormalMap: normalMapTexture,
+	});
+
+	// Create glass objects
+	const cylinderGeometry = new THREE.CylinderGeometry( 0.5, 0.5, 2, 32 ); 
+	const cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 ); ;
+	const torusGeometry = new THREE.TorusGeometry( 0.6, 0.3, 16, 100 ); 
+
+	// Create meshes
+	const cylinderMesh = new THREE.Mesh( cylinderGeometry, material );
+	const cubeMesh = new THREE.Mesh( cubeGeometry, material );
+	const torusMesh = new THREE.Mesh( torusGeometry, material );
+
+	// Set mesh positions
+	cylinderMesh.position.set(1.5, -0.2, 2);
+	cubeMesh.position.set(-1, -1, 2);
+	torusMesh.position.set(-1, 1.4, 2);
+
+	// Add meshes to global var
+	glassObjects.push(cylinderMesh);
+	glassObjects.push(cubeMesh);
+	glassObjects.push(torusMesh);
+
+	// Add meshes to scene
+	scene.add(cylinderMesh);	
+	scene.add(cubeMesh);
+	scene.add(torusMesh);	
+
+}
+
+function animateText() {
+
+	// Don't run unless text are loaded
+	if (textMovingLeft.length == 0) return;
+
+	// Move text to the left
+	for (let i = 0; i < textMovingLeft.length; i++) { textMovingLeft[i].translateX(-1 * textSpeed); }
+
+	// Move text to the right
+	for (let x = 0; x < textMovingRight.length; x++) { textMovingRight[x].translateX(textSpeed); }
+
+	// Track distance text has travelled
+	textDistanceTravelled += Math.abs(textSpeed);
+
+	// If text is reaching out of the screen, switch directions
+	if (textDistanceTravelled > textResetOffset) {
+		textSpeed = textSpeed * -1;
+		textDistanceTravelled = 0;
+	}
+
+}
+
+function animateGlass() {
+
+	// Don't run unless objects are loaded
+	if (glassObjects.length == 0) return;
+
+	for (let i = 0; i < glassObjects.length; i++) {
+
+		var obj = glassObjects[i];
+
+		obj.rotation.x += glassObjectRotationSpeed;
+		obj.rotation.y += glassObjectRotationSpeed;
+		obj.rotation.z += glassObjectRotationSpeed;
+
+	}
+
+}
+
+// Update function called every frame for animation
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+	animateText();
+	animateGlass();
+
+	// Your animation/rendering code goes here
+	if (renderer) renderer.render( scene, camera);
+} 
+
+// Initialize three.js scene, objects, and effects
+initializeScene();
+
+createLight();
+placeCamera();
+
+loadGlassObjects();
+loadStackedText(7);
+
+animate();
+
+//add event listeners to resize camera and scene, as well as the background plane
+//also add functionality to load different pages haha
+window.onresize = function onWindowResize() {
+
+	// Update Camera aspect
+    camera.aspect = canvasContainer.offsetWidth / canvasContainer.offsetHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
+
 }
-
-//apply - load new page function
-var letsGoBackButton = document.getElementById("goBackButton");
-
-if (letsGoBackButton) letsGoBackButton.addEventListener(('click'), () =>
-{   
-    //load second page html
-    var a = document.createElement('a');
-
-    a.href = "https://johnathantam.github.io/Portfolio/index.html";
-    a.click();
-})
-
-var githubButton = document.getElementById("goToGithub");
-
-if (githubButton) githubButton.addEventListener(('click'), () =>
-{   
-    //load second page html
-    var a = document.createElement('a');
-
-    a.href = "https://github.com/johnathantam";
-	a.target = "blank";
-    a.click();
-})
-
-var resumeButton = document.getElementById("goToResume");
-
-resumeButton.addEventListener(('click'), () => {
-    //load second page html
-    var a = document.createElement('a');
-
-    a.href = "./CustomImages/Resume2022.pdf";
-    a.target = "blank";
-    a.click();
-})
-
-var experience = document.getElementById("goToExperience");
-
-if (experience) experience.addEventListener(('click'), () => {
-    //load second page html
-    var a = document.createElement('a');
-
-    a.href = "https://johnathantam.github.io/Portfolio/ExperiencePage/index.html";
-    a.click();
-})

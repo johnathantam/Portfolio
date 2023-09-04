@@ -11,23 +11,70 @@
     <script type="module" src="app.js" defer></script>
     <title>John's Portfolio</title>
 </head>
-<body style="overflow: hidden">
-    <canvas id="bg"></canvas>
+<body>
 
-    <main>
-        <div class="center-content">
-            <h1 id="text" class="center-box-title">I have the groundwork you need.</h1>
-            <h4 id="text" class="center-box-content">
-                I've done the work learning all the web technologies you need: javascript, HTML, CSS, React, name it and I'll use it. <b>Got An Idea? Let's Talk at johnathantam00@gmail.com</b>
-            </h4>
+    <section id="canvasContainer" class="canvas-container">
+        <canvas class="three-canvas" id="bg"></canvas>
+    </section>
 
-            <div class="center-box-navigation">
-                <button class="regular-button" id="goBackButton">Go Back</button>
-                <button class="regular-button" id="goToExperience">Experience</button>
-                <button class="regular-button" id="goToGithub">Github</button>
-                <button class="regular-button" id="goToResume">Resume</button>
+    <section class="about-me-section">
+
+        <div class="about-me-center-content">
+
+            <p class="about-me-navigation-text">
+                <a class="about-me-navigation-text-page" href="https://johnathantam.github.io/Portfolio/index.html">Home</a> / 
+                <a class="about-me-navigation-text-page" id="this-page">About Me</a> / 
+                <a class="about-me-navigation-text-page" href="https://johnathantam.github.io/Portfolio/ExperiencePage/index.html">Experience</a>
+            </p>
+
+            <h1 class="about-me-intro-statement">Why hello there, <br>I'm Johnathan.</h1>
+
+            <div class="about-me-description-box">
+
+                <aside class="about-me-left-sidebar">
+
+                    <div class="about-me-left-sidebar-picture"></div>
+
+                    <div class="about-me-left-sidebar-quick-facts-box">
+                        
+                        <div class="about-me-left-sidebar-quick-fact">
+                            <p class="about-me-left-sidebar-quick-fact-title">Reading: </p>
+                            <p class="about-me-left-sidebar-quick-fact-description">The Untethered Soul</p>
+                        </div>
+
+                        <div id="second-fact" class="about-me-left-sidebar-quick-fact">
+                            <p class="about-me-left-sidebar-quick-fact-title">Role Model: </p>
+                            <p class="about-me-left-sidebar-quick-fact-description">Izumi from Horimiya</p>
+                        </div>
+
+                    </div>
+                    
+                </aside>
+
+                <div class="about-me-description-content-box">
+
+                    <div class="about-me-description-content">
+                        I'm an enthusiastic highschool student pursuing computer science. I enjoy the pursuit of craft, solving problems, and creating.
+                        <br><br>
+                        I'm curious and will never back down from a good project, persistent when I don't know how.
+                        <br><br>
+                        I value clarity, continous learning, and quality. These values guide my problem solving and life in general.
+                        <br><br>
+                        Outside of school I enjoy hiking, rock climbing, teaching, and of course... gaming! 
+                        <br><br>
+                        Got a problem? Question? Or anything really. <a href="mailto: johnathantam00@gmail.com">We should talk!</a>
+                    </div>
+
+                    <a class="regular-button" href="https://johnathantam.github.io/Portfolio/ExperiencePage/index.html">Next Page</a>
+
+                </div>
+
             </div>
+
         </div>
-    </main>
+
+        
+    </section>
+    
 </body>
 </html>
