@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
@@ -13,17 +13,24 @@
 </head>
 <body style="overflow: hidden;">
 
-    <canvas id="bg"></canvas>
-    
-    <main>
+    <section id="canvasContainer" class="canvas-container">
+        <canvas class="three-canvas" id="bg"></canvas>
+    </section>
+
+    <section class="main-info">
         <div class="center-content">
-            <h1 id="text" class="center-box-title">Hi, im Johnathan.</h1>
-            <p id="text" class="center-box-content">
-               A UI/UX Designer and Web Developer with years worth experience to help you build, design, and maintain your website. 
+            <h1 id="fade-in" class="center-box-title">Hi, I'm Johnathan.</h1>
+            <p id="fade-in" class="center-box-content">
+               A highschool student passionate in design, cooking, and technology. If you're here, I would love to work with you.
             </p>
-            <button id="getStartedButton" onclick="loadGetStartedPage()" class="regular-button">Get Started!</button>
+            <div id="fade-in" class="center-box-navigation">
+                <a class="regular-button" href="./AboutPage/index.html">About</a>
+                <a class="regular-button" href="./ExperiencePage/index.html">Experience</a>
+                <a class="regular-button" href="./Images/Resume2022.pdf" target="_blank">Resume</a>
+                <a class="regular-button" href="https://github.com/johnathantam" target="_blank">Github</a>
+            </div>
         </div>
-    </main>
+    </section>
     
 </body>
 </html>
