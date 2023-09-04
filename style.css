@@ -1,89 +1,116 @@
-/*FIRST PAGE*/
+html {
+    width: 100%;
+    height: 100%;
+}
 
-html, body {
-  width: 100%;
-  height: 100%;
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: black;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: Shippori Antique B1;
+    margin: 0;
+    padding: 0;
+    font-family: Shippori Antique B1;
 }
 
-canvas {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
+.canvas-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-main {
-  position: absolute;
-  z-index: 10;
-  min-width: fit-content;
-  width: 100%;
-  height: 100%;
-  display: grid;
+.three-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
-.regular-button {
-  font-size: 100%;
-  width: auto;
-  height: 15%;
-  padding-left: 2%;
-  padding-right: 2%;
-  margin: auto;
-  text-align: center;
-  color: white;
-  background-color: transparent;
-  border-radius: 5px;
-  border: 2px solid white;
-  transition-duration: 0.4s;
-}
-
-.regular-button:hover {
-  background-color: white;
-  color: black;
+.main-info {
+    position: absolute;
+    z-index: 1;
+    min-width: fit-content;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .center-content {
-  width: 30%;
-  height: 30%;
-  margin: auto;
-  font-size: 100%;
-
-  display: flex;
-  flex-direction: column;
-  animation: center-box-header ease 10s;
+    width: 30%;
+    height: auto;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: center-box-header ease 10s;
 }
 
 .center-box-title {
-  margin: auto; 
-  text-align: center; 
-  color: white;
-  font-size: 200%;
+    text-align: left; 
+    color: white;
+    font-size: 4vw;
 }
 
 .center-box-content {
-  margin: auto; 
-  font-size: 100%; 
-  color: white; 
-  text-align: center;
-  line-height: 200%;
+    margin-top: 5%; 
+    font-size: 100%; 
+    color: white; 
+    text-align: left;
+    line-height: 200%;
 }
 
-#text {
-  animation: text ease 3s;
-  -webkit-animation: text ease 3s;
-  -moz-animation: text ease 3s;
-  -o-animation: text ease 3s;
-  -ms-animation: text ease 3s;
+.center-box-navigation {
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 1.5%;
+    margin-top: 7%;
+}
+
+.regular-button {
+    font-size: 100%;
+    width: auto;
+    height: auto;
+    padding: 1% 2% 1% 2%;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid white;
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
+
+.regular-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+#fade-in {
+    animation: text ease 3s;
+    -webkit-animation: text ease 3s;
+    -moz-animation: text ease 3s;
+    -o-animation: text ease 3s;
+    -ms-animation: text ease 3s;
+}
+
+@keyframes text {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 @media (orientation: portrait) {
+
   .center-content {
     width: 70%;
   }
@@ -92,11 +119,8 @@ main {
     font-size: 150%;
   }
 
-  .center-box-content {
-    font-size: 90%;
-  }
-
   .regular-button {
     font-size: 90%;
   }
+
 }
