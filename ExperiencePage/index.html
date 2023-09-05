@@ -3,89 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Show. Don't tell.port" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <script type="module" src="app.js" defer></script>
     <title>John's Portfolio</title>
 </head>
-<body style="overflow-x: hidden; background-color: black;">
-    <canvas id="bg"></canvas>
+<body>
 
-    <main>
-        <div class="center-box-header">
-            <h1 id="text" class="center-box-title">Lets Shoot Stars, start moving your cursor.</h1>
-            <button id="goBackButton" class="regular-button" style="margin: auto; grid-row: 3/4; grid-column: 1/2">Go Back!</button>
-            <h6 class="center-box-content"><u>Scroll Down</u></h6>
-        </div>
-    </main>
-
-    <section class="project-section">
-        <section class="project-info-section">
-            <div class="project-title-box">
-                <h1 class="project-title">Volume Sizzler</h1>
-            </div>
-            <div class="project-description">
-                A chrome extension. This extension can be used to amplify, adjust bass, and as well as adjust treble. Have fun! Enjoy.
-            </div>
-        </section>
-
-        <section class="project-pictures">
-            <div class="project-picture-parent">
-                <img src="./CustomImages/ExportVolumeIconV001.svg" class="project-picture-embed"></img>
-            </div>
-            <div class="project-picture-parent" style="background-color: #ff4e00; background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);"></div>
-        </section>
+    <section class="canvas-html-overlay">
+        <h1 class="canvas-html-overlay-title">Experience</h1>
     </section>
 
-    <section class="project-section">
-        <div class="project-info-section">
-            <div class="project-title-box">
-                <h1 class="project-title">Dunglads</h1>
-            </div>
-            <div class="project-description">
-                Developed and coded this awesome linear roguelike game alongside a team of 3.
-            </div>
-        </div>
-        
-        <section class="project-pictures">
-            <div class="project-picture-parent"><img src="./CustomImages/Dunglads.png" class="project-picture-embed"></img></div>
-            <div class="project-picture-parent" style="background-color: #7f5a83; background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);"></div>
-        </section>
+    <section id="canvasContainer" class="canvas-container">
+        <canvas class="three-canvas" id="bg"></canvas>
     </section>
 
-    <section class="project-section">
-        <div class="project-info-section" style="grid-column: 3/6;">
-            <div class="project-title-box">
-                <h1 class="project-title">JPK</h1>
-            </div>
-            <div class="project-description">
-                Created a electron-js framework password keeper. It encrypts passwords with AES-256 encryption type and stores it and can only decrypt the password with the right key.
-            </div>
+    <section class="experience-intro-box">
+
+        <div class="experience-intro-statement-box">
+
+            <p class="experience-navigation-text">
+                <a class="experience-navigation-text-page" href="https://johnathantam.github.io/Portfolio/index.html">Home</a> / 
+                <a class="experience-navigation-text-page" href="https://johnathantam.github.io/Portfolio/AboutPage/index.html">About Me</a> / 
+                <a class="experience-navigation-text-page" id="this-page">Experience</a>
+            </p>
+
+            <h1 class="experience-intro-statement">See my projects <br>and work.</h1>
+
         </div>
-        
-        <section class="project-pictures">
-            <div class="project-picture-parent"><img src="./CustomImages/JPK-Logo.png" class="project-picture-embed"></img></div>
-            <div class="project-picture-parent" style="background-color: #6b0f1a; background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);"></div>
-        </section>
+
     </section>
 
-    <section class="project-section" id="hello">
-        <div class="project-info-section">
-            <div class="project-title-box">
-                <h1 class="project-title">Youtube Watch Party</h1>
-            </div>
-            <div class="project-description">
-                A multi-socket web application in which youtube videos are synced between people online.
-            </div>
+    <div class="experience-item-type-seperator">
+        <p class="experience-item-type-seperator-text">PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS PROJECTS</p>
+    </div>
+
+    <div class="experience-item-box">
+
+        <!-- Image sourced from http://7-themes.com/6790687-free-anime-music-wallpaper.html -->
+        <div class="experience-item-picture" style="background-image: url('./Images/VolumeSizzler.jpg');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Chrome Extensions /</span> <span class="experience-item-name">Volume Sizzler</span> </h1>
+            <p class="experience-item-description">
+                Created, designed, and published. Volume Sizzler is my attempt to add more functionality to the already existing Volume Booster extensions.
+                It offers additional features like adjustable treble and bass settings.
+                <br>
+                <br>
+                Built with Chrome Extensions API v3.
+            </p>
+
+            <a class="regular-button" href="https://chrome.google.com/webstore/detail/volume-sizzler/pajeannaoeabfimkbbcecmbionmmoohm" target="_blank">Show. Don't tell.</a>
+
         </div>
-        
-        <section class="project-pictures">
-            <div class="project-picture-parent"><img src="./CustomImages/YoutubeWatchParty.JPG" class="project-picture-embed"></img></div>
-            <div class="project-picture-parent" style="background-color: #7ee8fa; background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);"></div>
-        </section>
-    </section> 
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <!-- Image sourced from https://wallpaperaccess.com/anime-gamer-room -->
+        <div class="experience-item-picture" style="background-image: url('./Images/DoubleClick.jpg');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Chrome Extensions / </span> <span class="experience-item-name">Double Click Guard</span> </h1>
+            <p class="experience-item-description">
+                Created, designed, and published. Double Click Guard is my way to eliminate accidental double clicks from broken mouses.
+                By providing a simple UI and a blanket for each click, I've never had to worry about my double clicking ever again.
+                <br>
+                <br>
+                Built with Chrome Extensions API v3.
+            </p>
+
+            <a class="regular-button" href="https://chrome.google.com/webstore/detail/double-click-guard/beepahbfbcfofpnmfdhpfhjcnpiabaom" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/GetColors.JPG');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Websites / </span> <span class="experience-item-name">Get Colors</span> </h1>
+            <p class="experience-item-description">
+                Have you ever wanted to get a specific color from an image? I know I have.
+                Get Colors is my way of making that process easy and intuitive.
+                <br>
+                <br>
+                Built with Javscript, HTML, and CSS.
+            </p>
+
+            <a class="regular-button" href="https://johnathantam.github.io/GetColors/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/Youtube\ Watch\ Party.JPG');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Websites / </span> <span class="experience-item-name">Youtube Watch Party</span> </h1>
+            <p class="experience-item-description">
+                When watching videos with friends, screen sharing can be blurry and limiting.
+                YouTube Watch Party is my solution for watching videos with friends in 
+                a synchronized manner, just like screen sharing, but with the advantage of 
+                high-resolution video quality since everyone watches locally.
+                <br>
+                <br>
+                Built with Socket.io, Javascript, HTML, and CSS.
+            </p>
+
+            <a class="regular-button" href="https://replit.com/@PopOFF12/WatchParty" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/Dunglads.png');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Games / </span> <span class="experience-item-name">Dunglads</span> </h1>
+            <p class="experience-item-description">
+                Created, designed, and published in a team of three: Kenneth, Allan, and I. I was responsible for coding and
+                development for the game. Dunglads is a multiplayer dungeon based game, try if you want,
+                but I do warn you, no one has beat the game.
+                <br>
+                <br>
+                Built with the Unity Engine.
+            </p>
+
+            <a class="regular-button" href="https://cckoko.itch.io/dunglads" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/Neodud.JPG');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Games / </span> <span class="experience-item-name">Neodud</span> </h1>
+            <p class="experience-item-description">
+                Neodud is a 1v1 based shooter and my way of trying to find games to play with friends.
+                <br>
+                <br>
+                Built with the Unity Engine.
+            </p>
+
+            <a class="regular-button" href="https://jtomato.itch.io/neodud" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/JPK.JPG');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Software / </span> <span class="experience-item-name">JPK</span> </h1>
+            <p class="experience-item-description">
+                Remembering passwords has been a problem since the invention of passwords. JPK is my way
+                of encrypting and storing passwords locally for easy access. Using AES 256 encryption, the same 
+                encryption that the military uses, every password in JPK are in safe hands.
+                <br>
+                <br>
+                Built with Electron.js and React
+            </p>
+
+            <a class="regular-button" href="https://github.com/johnathantam/JPK" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('./Images/TangBot.JPG');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Projects / Discord Bots / </span> <span class="experience-item-name">Tang Bot</span> </h1>
+            <p class="experience-item-description">
+                Created and designed in 2021 as a joke, Tang Bot has come to fill a special place
+                in how our friends and I share music together.
+                <br>
+                <br>
+                Built with Discord.js v14.
+            </p>
+
+            <a class="regular-button" href="https://discord.com/api/oauth2/authorize?client_id=823256526956789760&permissions=8&scope=bot" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-type-seperator">
+        <p class="experience-item-type-seperator-text">WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK</p>
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('Images/seasidesustainability.png');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Work / Web Developer / </span> <span class="experience-item-name">Seaside Sustainability</span> </h1>
+            <p class="experience-item-description">
+                Worked as a volunteer web developer in a team of 12, assisting and acting as the 
+                middle man between different departments and the website.
+            </p>
+
+            <a class="regular-button" href="https://www.seasidesustainability.org/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('Images/M2D.png');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Work / Web Developer / </span> <span class="experience-item-name">Mothers To Daughters</span> </h1>
+            <p class="experience-item-description">
+                Worked as a sole volunteer web developer, 
+                brainstorming, designing, maintaining, and 
+                publishing for M2D.
+            </p>
+
+            <a class="regular-button" href="https://www.motherstodaughters.ca/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('Images/WWT.webp');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Work / Web Developer / </span> <span class="experience-item-name">Wonder Women Tech</span> </h1>
+            <p class="experience-item-description">
+                Worked as a sole volunteer web developer, maintaining and 
+                helping to promote upcoming events through their website.
+            </p>
+
+            <a class="regular-button" href="https://wonderwomentech.com/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('Images/idealabkids.png');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Work / Teacher / </span> <span class="experience-item-name">Idea Lab Kids</span> </h1>
+            <p class="experience-item-description">
+                Worked as a STEAM teacher in a team of many, 
+                specifically game development and 3D modelling.
+            </p>
+
+            <a class="regular-button" href="https://idealabkids.com/programs/camps/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-item-box">
+
+        <div class="experience-item-picture" style="background-image: url('Images/yomiesriceyogurt.png');"></div>
+
+        <div class="experience-item-description-box">
+
+            <h1 class="experience-item-title-text"> <span class="experience-item-type">Work / Food Service / </span> <span class="experience-item-name">Yomie's Rice Yogurt</span> </h1>
+            <p class="experience-item-description">
+                Worked as a food service worker in a team of many, preparing and creating drinks
+                for awesome customers.
+            </p>
+
+            <a class="regular-button" href="https://www.yomiesriceyogurt.com/" target="_blank">Show. Don't tell.</a>
+
+        </div>
+
+    </div>
+
+    <div class="experience-page-ending-box">
+
+        <div class="experience-page-ending-center-box">
+
+            <h1 class="experience-page-ending-center-title">We should talk.</h1>
+            <p class="experience-page-ending-center-description">Got a problem? Question? Or anything really. <a href="mailto: johnathantam00@gmail.com">We should talk!</a></p>
+            <a class="regular-button" href="https://johnathantam.github.io/Portfolio/index.html">Next Page</a>
+
+        </div>
+
+    </div>
+    
 </body>
 </html>
