@@ -94,10 +94,16 @@ body {
 .experience-item-picture {
     aspect-ratio: 1/1;
     height: 100%;
+    border: solid;
+    border-width: 1px;
     background-color: black;
     box-shadow: 5px 5px 0px rgb(84, 63, 237);
     background-size: cover;
     background-position: center;
+}
+
+.experience-item-picture-contained {
+    background-size: contain;
 }
 
 .experience-item-description-box {
