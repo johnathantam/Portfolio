@@ -1,7 +1,7 @@
 //script for managing the second scene with its entirely different camera, renderer, etc
-import * as THREE from 'https://cdn.skypack.dev/three@0.133.0';
-import { RGBELoader } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/loaders/RGBELoader.js';
-import { FontLoader } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/loaders/FontLoader.js';
+import * as THREE from 'three';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
 // get canvas object where the scene will be drawn
 var canvasContainer = document.getElementById("canvasContainer");
